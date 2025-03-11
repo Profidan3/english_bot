@@ -1,5 +1,9 @@
-import 'package:english_bot/english_bot.dart' as english_bot;
+import 'package:english_bot/input_message.dart';
+import 'package:english_bot/telegram_worker.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${english_bot.calculate()}!');
+Future<void> main() async {
+  TelegramWorker worker = TelegramWorker();
+  for (InputMessage inputMessage in await worker.getInputMessages()) {
+    print(inputMessage.text);
+  }
 }
