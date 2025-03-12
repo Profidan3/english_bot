@@ -41,9 +41,10 @@ class TelegramWorker {
         "text": outputMessage.text,
         "reply_markup": jsonEncode({"inline_keyboard": outputMessage.buttons}),
       };
+      String apiKey = String.fromEnvironment('TG_API_KEY');
       await http.post(
         Uri.parse(
-            "https://api.telegram.org/bot6546585896:AAFZZuxuwQQdoPlVznu-RDoBd7k2XmO89nQ/sendMessage"),
+            "https://api.telegram.org/bot$apiKey/sendMessage"),
         body: params,
       );
     } catch (e) {
